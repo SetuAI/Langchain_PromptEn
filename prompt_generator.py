@@ -21,7 +21,7 @@ validate_template=True
 template.save('template.json')
 
 '''
-prompt_reuse.py
+Next file is prompt_reuse.py
 
 Now we have exported this prompt template in json.
 Now we will replace the prompt template defined in promptui.py with the exported template.

@@ -17,4 +17,15 @@ documents = [
 
 result = embedding.embed_documents(documents)
 
+'''
+embed_documents : this function is used to embed multiple documents at once
+
+'''
+
 print(str(result))
+
+'''
+Look at the output closely. 
+We have a 2d list inside which we have 3 lists. Each list represents list of vectors of the respective document.
+
+'''

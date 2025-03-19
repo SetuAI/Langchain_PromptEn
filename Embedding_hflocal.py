@@ -18,7 +18,8 @@ vector = embedding.embed_documents(documents)
 vector_size = len(vector[0])  # Get the length of the first vector
 
 print(f"Number of documents: {len(vector)}")
-print(f"Embedding vector size (dimensions): {vector_size}")
+print(f"Embedding vector size (dimensions): {vector_size}") # you can check the output is a 384 D vector
 
 # Print a snippet of the first embedding vector (optional)
 print(f"First 10 elements of the first embedding vector: {vector[0][:10]}")
+# if you want for the 2nd document : vector[1][:10]

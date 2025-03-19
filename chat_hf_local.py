@@ -7,7 +7,9 @@ The speed is dependant on the hardware and the model size
 from langchain_huggingface import ChatHuggingFace, HuggingFacePipeline
 import os
 
-# be default , all the files are downloaded in C drive and hence we need to change the path to D drive
+# be default , all the files are downloaded in C drive
+# and hence we need to change the path to D drive
+
 os.environ['HF_HOME'] = 'D:/huggingface_cache'
 
 llm = HuggingFacePipeline.from_model_id(
