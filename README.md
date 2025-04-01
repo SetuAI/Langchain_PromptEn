@@ -89,3 +89,22 @@ The only loophole here, is that there is no validation.
 Which means if I want age:int , which means I expect the output of age in int format
 but if another developer defines age:str , when there will be no hardblock and TypeDict will let it execute without error.
 So please note, TypeDict, only helps you define the output format without any guardrails.
+
+2. Pydantic :
+Pydantic is data validation and data parsing library for python. It ensures that the data you work with is
+correct, structured and type-safe.
+If you want to put a check on your data if it is matching certain criteria or not, in that case, you can use Pydantic.
+For example, while building APIs.(it should be right type, right format, etc.)
+
+-----------------------------------------------------------------------------------------------------------
+
+When working with_structured_output , then you can tell by which method you want the structured output
+you have "method" parameter .
+In this , you can set 2 values : json mode and function calling.
+
+json mode to be used when you want the structured output in json format only.
+function calling to be used when you want to call a particular function.
+
+If working with open ai models, you use function calling.
+when working with claude gemini , prefer json mode.
+Many hugging face models dont support json mode and function calling, and that is when we use "Output Parsers".

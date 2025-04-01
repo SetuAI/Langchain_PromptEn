@@ -42,7 +42,7 @@ structured_model = model.with_structured_output(Review)
 # also if certain things are not present, for example pros are listed , but cons are not, we keep them optional
 
 
-result = structured_model.invoke("""The Chrono-Comm, a wristwatch communicator straight out of science fiction, presents a fascinating blend of innovation and frustration. Its sleek, minimalist design is a head-turner, and the holographic interface is incredibly intuitive, offering a seamless experience for calls, messaging, and even video chat. The built-in AI assistant, "Chronos," proves surprisingly helpful with scheduling and information retrieval, though it occasionally exhibits quirky personality traits. However, the device's Achilles' heel is its abysmal battery life, barely lasting a single day with moderate use. While the universal translator function works remarkably well, accurately converting speech in real-time, voice commands are frequently misinterpreted, leading to frustrating errors. Durability is also a concern; the holographic screen scratched easily during testing. The Chrono-Comm offers a tantalizing glimpse into the future of personal communication, but significant improvements are needed, particularly in battery life and robustness, before it can truly live up to its potential. It’s a stylish and innovative device, but its practicality is severely hampered by these significant shortcomings. A promising concept, undoubtedly, but one that needs further refinement before achieving mainstream appeal. Review by Chirantan Lonkar""")
+result = structured_model.invoke("""<Insert any review here...>""")
 
 print(result)
 print(result['summary'])
