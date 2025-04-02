@@ -14,4 +14,5 @@ model = ChatGoogleGenerativeAI(model='gemini-1.5-pro')
 
 result = model.invoke('Can you tell me something about EY?')
 
+print(result)
 print(result.content)

@@ -21,7 +21,7 @@ model = ChatOpenAI(model='gpt-4o', # model to be communicated with
                    max_completion_tokens=None, #"None" ensures we explicitly dont put any limit on the output length 
                    openai_api_key=api_key)
 
-result = model.invoke("Can you tell me something about EY?")
+result = model.invoke("Can you tell me something about San Francisco ? ")
 
 '''
 2 ways to visualize the output:
@@ -31,7 +31,7 @@ print(result) : this gives output as well some other metadata like total tokens,
 print(result.content) : this only extracts the content of the output and not the metadata (filtered output)
 '''
 # print(result)
-print(result.content)
+print(result)
 
 
 '''

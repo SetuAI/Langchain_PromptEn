@@ -1,4 +1,11 @@
 # Langchain_PromptEn
+
+
+1. chat models
+2. embedding models 
+3. prompt templates (start with promptui.py,prompt_generator.py,prompt_reuse.py )
+4. structured outputs
+
 repo contains some codes and understanding on Langchain implementation
 
 We have created some chat models using Gemini, Claude and Open AI just to get an understanding.
@@ -108,3 +115,28 @@ function calling to be used when you want to call a particular function.
 If working with open ai models, you use function calling.
 when working with claude gemini , prefer json mode.
 Many hugging face models dont support json mode and function calling, and that is when we use "Output Parsers".
+
+-------------------------------------------------------------------------------------------------------------------
+
+Output Parsers : 
+
+Certain LLMs are fine tuned in such a way, they will give structured output in response. 
+In langchain we use with_structured_output function here. 
+
+Certain LLMs can't. 
+This is where we prefer using output parsers.
+
+Output parsers in langchain help convert raw LLM responses into structured formats like 
+JSON, csv, pydantic models and more. They ensure consistency, validation and ease of use in applications. 
+
+Output parser types : 
+stroutput parser
+jsonoutput parser
+structured output parser
+pydantic output parser
+csv output parser
+etc...
+
+-------------------------------------------------
+StrOutputParser : 
+It takes the LLM response and converts it into a plain string.

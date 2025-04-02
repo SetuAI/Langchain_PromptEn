@@ -27,5 +27,8 @@ print(str(result))
 '''
 Look at the output closely. 
 We have a 2d list inside which we have 3 lists. Each list represents list of vectors of the respective document.
+After this,
+If you want to understand how to perform "Document search with embeddings using Gemini"
+Refer this colab link : https://colab.research.google.com/drive/1kXsyRhaUr2MPrV3mh7jIuT6jTypYfkUN?usp=sharing
 
 '''
