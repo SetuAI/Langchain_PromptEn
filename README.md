@@ -3,8 +3,15 @@
 
 1. chat models
 2. embedding models 
-3. prompt templates (start with promptui.py,prompt_generator.py,prompt_reuse.py )
-4. structured outputs
+3. prompt templates (start with promptui.py,prompt_generator.py,prompt_reuse.py)
+4. messages (chatbot.py,messages.py,chat_prompt_template.py)
+5. message placeholder (message_placeholder.py)
+6. structured outputs
+7. Output Parsers (stroutputparser.py,stroutputparser_hf.py, stroutputparser1.py,jsonoutputparser1.py,
+   structured_output_parser.py, pydantic_output_parser.py)
+
+
+
 
 repo contains some codes and understanding on Langchain implementation
 
@@ -21,7 +28,9 @@ For running open source models : they are compute intensive which can be a drawb
 
 What are Embeddings?
 
-Embeddings are numerical representations of text (or other data types) that capture the semantic meaning of the text. In other words, they transform words, phrases, or documents into vectors (lists of numbers) in a high-dimensional space. The closer two embeddings are to each other in this space, the more semantically similar the corresponding pieces of text are.
+Embeddings are numerical representations of text (or other data types) that capture the semantic meaning of the text. 
+In other words, they transform words, phrases, or documents into vectors (lists of numbers) in a high-dimensional space. 
+The closer two embeddings are to each other in this space, the more semantically similar the corresponding pieces of text are.
 
 Some Links : 
 https://python.langchain.com/docs/integrations/chat/openai/
@@ -126,6 +135,8 @@ In langchain we use with_structured_output function here.
 Certain LLMs can't. 
 This is where we prefer using output parsers.
 
+Note : Output Parser can work with LLM that can and cannot generate SO.
+
 Output parsers in langchain help convert raw LLM responses into structured formats like 
 JSON, csv, pydantic models and more. They ensure consistency, validation and ease of use in applications. 
 
@@ -138,5 +149,48 @@ csv output parser
 etc...
 
 -------------------------------------------------
-StrOutputParser : 
-It takes the LLM response and converts it into a plain string.
+
+StrOutputParser :
+
+It's job is simple, It takes the LLM response and converts it into a string.
+
+why and when is it useful ? 
+
+for example ,
+talk to your llm twice. Give one topic to LLM and we want LLM to give detailed report on that topic. (ex : "detailed report on blackholes")
+Once you get the detailed report, resend this report to LLM and ask it to summarize the report in 5 lines .
+
+do compare when you use 1.result.content  and  2.StrOutputParser 
+(refer stroutputparser.py file)
+
+
+
+-------------------------------------------------
+
+JSONOutputParser:
+
+It forces the LLM to generate the output in JSON format. 
+
+-------------------------------------------------
+
+StructuredOutputParser : 
+
+It is an output parser which helps extract structured JSON data from the LLM responses
+based on "predefined field schemas".
+The difference between this parser and JSON output parser is that you define the schema here
+you tell the LLM that this is particularly how you want to structure of the response to be.
+
+It works by defining a list of fields (ResponseSchema) that the model should return, ensuring
+the output follows a structured format. (refer structured_outputparser.py file)
+
+
+-------------------------------------------------
+
+Pydantic Output Parser : 
+
+Pydantic Output Parser is a structured output parser in langchain 
+that use pydantic models to enforce schema validation when processing LLM responses. 
+
+Now here, instead of schema you pass pydantic object
+And since it is a pydantic object you can not only enforce schema but also perform data validation.
+(Ensures that LLM responses follow a well defined structure.)

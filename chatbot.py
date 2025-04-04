@@ -20,7 +20,10 @@ load_dotenv()
 
 model = ChatOpenAI()
 
-# 1st message to Chat History
+# 1st message to Chat History , storing chat history
+# chat history is a list of messages exchanged between human and AI
+# each time user inputs a message, it is appended to the chat history
+
 chat_history = [
     SystemMessage(content='You are a helpful AI Assistant. \
         You ask the user relevant questions and provide them with the information they need.')

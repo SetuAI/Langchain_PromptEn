@@ -60,6 +60,7 @@ index, score = sorted(list(enumerate(scores)),key=lambda x:x[1])[-1]
 
 
 '''
+
 Info : 
 If scores is [0.8, 0.2, 0.5], enumerate(scores) will generate (0, 0.8), (1, 0.2), (2, 0.5), and so on.
 Which means : Document 0 has a score of 0.8 etc.. 
