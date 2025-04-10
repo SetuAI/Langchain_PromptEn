@@ -7,7 +7,7 @@ from pydantic import BaseModel,Field
 
 
 # form a model  
-model = ChatOpenAI()
+model = ChatOpenAI(model="gpt-4o-2024-08-06")
 
 # before this in with structured_output_pydantic.py we created schema using pydantic
 # we will remove that and create the schema using json 
@@ -76,7 +76,7 @@ Review by Chirantan Lonkar
 """)
 
 print(result)
-print(result.summary)
+print(result['summary'])
 
 # after this we will see how to work with json schema , go to json_schema.json
 # there we will understand how to create json schema 

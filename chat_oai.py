@@ -31,7 +31,7 @@ print(result) : this gives output as well some other metadata like total tokens,
 print(result.content) : this only extracts the content of the output and not the metadata (filtered output)
 '''
 # print(result)
-print(result)
+print(result.content)
 
 
 '''

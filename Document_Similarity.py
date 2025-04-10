@@ -16,8 +16,10 @@ Higher the score, more similar the vectors are.
 This principle is the same as what is used in RAG based applications.
 
 
-Cosine similarity measures the angle between two vectors; a value of 1 means the vectors are perfectly aligned (very similar), 
-and a value of -1 means they are perfectly opposite (very dissimilar). A value of 0 indicates orthogonality (no similarity).
+Cosine similarity measures the angle between two vectors; 
+a value of 1 means the vectors are perfectly aligned (very similar), 
+and a value of -1 means they are perfectly opposite (very dissimilar). 
+A value of 0 indicates orthogonality (no similarity).
  
  
 '''

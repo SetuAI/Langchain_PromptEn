@@ -7,11 +7,11 @@
 4. messages (chatbot.py,messages.py,chat_prompt_template.py)
 5. message placeholder (message_placeholder.py)
 6. structured outputs
-7. Output Parsers (stroutputparser.py,stroutputparser_hf.py, stroutputparser1.py,jsonoutputparser1.py,
+7. Output Parsers (stroutputparser001.py,stroutputparser_hf.py, stroutputparser1.py,jsonoutputparser1.py,
    structured_output_parser.py, pydantic_output_parser.py)
+8. Chains (simple_chain.py,sequential_chain.py, parallel_chain.py,conditional_chain.py)
 
-
-
+-----------------------------------------------------------------------------------------------------
 
 repo contains some codes and understanding on Langchain implementation
 
@@ -99,7 +99,7 @@ Now before doing model.invoke() in langchain , we need to specify the datat_form
 There are 3 types of data_format options : TypedDict, json_schema, Pydantic.
 
 1. TypedDict :
-Here, you define how will your output dictionary look like. For example, the output should be like {"Name":"ABC" , "age":"25}
+Here, you define how will your output dictionary look like. For example, the output should be like {"Name":"ABC" , "age":"twenty-five"}
 Here, you ensure dictionary follows a specific structure. What keys and values should go in there.
 The only loophole here, is that there is no validation.
 Which means if I want age:int , which means I expect the output of age in int format
@@ -135,7 +135,7 @@ In langchain we use with_structured_output function here.
 Certain LLMs can't. 
 This is where we prefer using output parsers.
 
-Note : Output Parser can work with LLM that can and cannot generate SO.
+Note : Output Parser can work with LLM that can and cannot generate JSON.
 
 Output parsers in langchain help convert raw LLM responses into structured formats like 
 JSON, csv, pydantic models and more. They ensure consistency, validation and ease of use in applications. 
@@ -143,7 +143,6 @@ JSON, csv, pydantic models and more. They ensure consistency, validation and eas
 Output parser types : 
 stroutput parser
 jsonoutput parser
-structured output parser
 pydantic output parser
 csv output parser
 etc...
@@ -157,7 +156,8 @@ It's job is simple, It takes the LLM response and converts it into a string.
 why and when is it useful ? 
 
 for example ,
-talk to your llm twice. Give one topic to LLM and we want LLM to give detailed report on that topic. (ex : "detailed report on blackholes")
+talk to your llm twice. 
+Give one topic to LLM and we want LLM to give detailed report on that topic. (ex : "detailed report on blackholes")
 Once you get the detailed report, resend this report to LLM and ask it to summarize the report in 5 lines .
 
 do compare when you use 1.result.content  and  2.StrOutputParser 
@@ -194,3 +194,19 @@ that use pydantic models to enforce schema validation when processing LLM respon
 Now here, instead of schema you pass pydantic object
 And since it is a pydantic object you can not only enforce schema but also perform data validation.
 (Ensures that LLM responses follow a well defined structure.)
+
+-------------------------------------------------
+
+CHAINS : 
+With the help of chains we can create a pipeline of Prompt designing, sending it to model 
+and getting output etc.
+
+Types of chains :
+1. Sequential Chain.
+2. Parallel Chain.
+3. Conditional Chain.
+
+Before this we will create a simple chain (simple_chain.py)
+
+Sequential Chain : 
+Ask for a topic from the user

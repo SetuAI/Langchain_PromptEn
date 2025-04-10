@@ -1,17 +1,20 @@
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
-import streamlit as st
+load_dotenv()
+import streamlit as st # pip install streamlit
 from langchain_core.prompts import PromptTemplate,load_prompt # to design prompt template
 
-load_dotenv()
 
+# defining the open ai model
 model = ChatOpenAI()
 
+# defining the UI
 st.header('Research Tool')
 
 # which paper does the user want
 paper_input = st.selectbox( "Select Research Paper Name", ["Attention Is All You Need",
-                                                           "BERT: Pre-training of Deep Bidirectional Transformers", "GPT-3: Language Models are Few-Shot Learners", 
+                                                           "BERT: Pre-training of Deep Bidirectional Transformers", 
+                                                           "GPT-3: Language Models are Few-Shot Learners", 
                                                            "Diffusion Models Beat GANs on Image Synthesis"] )
 
 # what should be the level of explanation

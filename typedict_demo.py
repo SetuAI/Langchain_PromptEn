@@ -11,7 +11,7 @@ class Person(TypedDict):
 # create a new dictionary new_person on the above format
 
 new_person : Person = {'name':'John',
-                       'age': 25}
+                       'age': 25} # this will throw error
 
 print(new_person) # {'name': 'John', 'age': 25}
 

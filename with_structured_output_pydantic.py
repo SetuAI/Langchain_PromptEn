@@ -7,7 +7,7 @@ from pydantic import BaseModel,Field
 
 
 # form a model  
-model = ChatOpenAI()
+model = ChatOpenAI(model="gpt-4o-2024-08-06")
 
 
 # creating class Review which will inherit from BaseModel as this is pydantic

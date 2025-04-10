@@ -16,7 +16,7 @@ from typing import TypedDict,Annotated,Optional,Literal
 
 
 # form a model 
-model = ChatOpenAI()
+model = ChatOpenAI(model="gpt-4o-2024-08-06")
 
 
 # creating class Review which will inherit from TypedDict
@@ -32,7 +32,7 @@ class Review(TypedDict):
     # we have imported Optional above  you can check
     pros: Annotated[Optional[list[str]] , "Write down all the pros discussed in the review in a list"]
     cons: Annotated[Optional[list[str]] , "Write down all the cons discussed in the review in a list"]
-    name : Annotated[Optional[str] , "Name of the reviewer"]
+    author : Annotated[Optional[str] , "Name of the reviewer"]
 
     
     
@@ -42,7 +42,11 @@ structured_model = model.with_structured_output(Review)
 # also if certain things are not present, for example pros are listed , but cons are not, we keep them optional
 
 
-result = structured_model.invoke("""<Insert any review here...>""")
+result = structured_model.invoke("""
+                                 The new NovaPhone Z shines with a vibrant display and blazing-fast processor. Battery life impresses, easily lasting a full day. Camera performance is solid, especially in daylight. The sleek design feels premium in hand. Software is smooth and intuitive, with minimal bloatware. However, low-light photos could be better. The speaker is adequate but lacks depth. No expandable storage is a minor drawback. Overall, the NovaPhone Z offers excellent value for its price. 
+                                 A strong contender in the mid-range market.
+                                 Review given by author Chirantan
+                                 """)
 
 print(result)
 print(result['summary'])

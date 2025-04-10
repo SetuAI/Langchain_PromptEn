@@ -6,7 +6,8 @@ based on "predefined field schemas".
 The difference between this parser and JSON output parser is that you define the schema here
 you tell the LLM that this is particularly how you want to structure of the response to be.
 
-It works by defining a list of fields (ResponseSchema) that the model should return, ensuring
+It works by defining a list of fields (ResponseSchema) 
+that the model should return, ensuring
 the output follows a structured format. 
 '''
 

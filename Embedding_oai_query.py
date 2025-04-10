@@ -15,11 +15,13 @@ load_dotenv()
 
 api_key = os.getenv("OPENAI_API_KEY")
 embedding = OpenAIEmbeddings(model='text-embedding-3-small', 
-                             dimensions=32,api_key= api_key) # number of dimensions in the output vector 
+                             dimensions=32,
+                             api_key= api_key) # number of dimensions in the output vector 
 # bigger dimensions are used in capturing more information about the token
 # small dimensions are used in capturing less information about the token and cost effective
 
-result = embedding.embed_query("EY is a global professional services organization") # embed a single query
+
+result = embedding.embed_query("We are so excited to welcome our new innovation") # embed a single query
 # for multiple queries we use another syntax
 
 print(str(result))

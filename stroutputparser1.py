@@ -25,14 +25,15 @@ template2 = PromptTemplate(
 # Start with creating a parser
 parser = StrOutputParser()
 
-# now form a chain (chain is a pieline where we execute the entire flow)
+# now form a chain (chain is a pipeline where we execute the entire flow)
 
 chain = template1 | model | parser | template2 | model | parser
 
 '''
 Understanding chain code : 
-We start with template1 : where the user sends some topic.
-Then we send the prompt(topic) to the model. Our model will process the result. But the result has metadata in which 
+We start with template1 : where the user sends some topic to the LLM.
+Then we send the prompt(topic) to the model. 
+Our model will process the result. But the result has metadata in which 
 we are not intersted. We only want the textual content.
 This is done by parser which extracts the detailed report from the entire metadata.
 Now we have to take the report and send it to template 2 (this will generate 2nd prompt)

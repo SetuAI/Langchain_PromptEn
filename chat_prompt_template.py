@@ -1,18 +1,15 @@
-'''
-This explains how to define a dynamic chat prompt template in lagnchain.
-Where in you dont define a single prompt, but a series of prompts which are dynamic in nature.
-'''
-
 from langchain_core.prompts import ChatPromptTemplate
 
-
-# forming chat template by creating object of ChatPromptTemplate
-chat_template = ChatPromptTemplate([
-    ('system','You are a helpful {domain} expert'), # system message - dynamic 
-    ('human','Explain in simple terms, what is {topic}')  # human message  - dynamic
+template = ChatPromptTemplate([
+    ("system", "You are a helpful AI bot. Your explain anything in depth reagrding {topic}."),
+    ("human", "Hello, how are you doing?"),
+    ("ai", "I'm doing well, thanks!"),
+    ("human", "{user_input}"),
 ])
 
-prompt = chat_template.invoke({'domain':'Cricket',
-                               'topic':'Dusra'})
-
-print(prompt)
+prompt_value = template.invoke(
+    {
+        "topic": "Dark matter",
+        "user_input": "explain what is dark matter?"
+    }
+)
