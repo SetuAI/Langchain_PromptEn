@@ -8,7 +8,7 @@ Unlike in sequential chain, where tasks happen sequentially, in parallel chain, 
 
 So we will do this task parallely.
 
-Sendthe text to model 1(say GPT )
+Send the text to model 1(say GPT )
 This will generate notes
 
 At the same time, parallely, we will generate quiz with help of that text to model 2 (claude)

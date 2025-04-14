@@ -10,6 +10,7 @@
 7. Output Parsers (stroutputparser001.py,stroutputparser_hf.py, stroutputparser1.py,jsonoutputparser1.py,
    structured_output_parser.py, pydantic_output_parser.py)
 8. Chains (simple_chain.py,sequential_chain.py, parallel_chain.py,conditional_chain.py)
+9. Components in RAG : Document Loaders (text_loader.py,pdf_loader.py)
 
 -----------------------------------------------------------------------------------------------------
 
@@ -210,3 +211,87 @@ Before this we will create a simple chain (simple_chain.py)
 
 Sequential Chain : 
 Ask for a topic from the user
+
+-----------------------------------------------------------------------------------------------------------
+
+ Document Loaders : https://python.langchain.com/docs/concepts/document_loaders/
+
+ Using langchain building RAG based applications
+
+ RAG is a technique that combines information retrieval with language generation
+ where a model retrieves relevant documents from a knowledge base and then uses
+ them as context to generate accurate and grounded responses.
+
+Benefits of using RAG : 
+Use of up-to data information
+Better privacy
+No limit of document size.
+
+Important components in a RAG :
+Document Loaders
+Text Splitters
+Vector Databases
+Retrievers 
+All these 4 components together build a RAG system.
+Start with learning Document Loaders -- 
+
+-----------------------------------------------------------------------------
+Document Loaders : 
+Mostly used ones are Document Loaders : TextLoader, PyPDFLoader, WebBaseLoader, csvLoader
+
+DC are components in Langchain used to load data from various sources into standardized format
+usually as document objects, which can be used for chunking, embedding, retrieval and generation.
+Data can come from multiple sources from PDFs to s3 to DB.
+We need to make sure, when data comes from any source , it should come in common standard format.
+This standardised format is called Document or Document object in langchain .
+
+Now, the standard format of a document object is: 
+
+Document(
+    page_content = "The actual text content",
+    metadata = {"source":"filename.pdf",...}
+)
+
+
+1. Text Loader: simplest document loader.
+It reads plain text (.txt files) and converts them into langchain document objects.
+
+Use case : 
+For log file processing, or video transcript processing.
+
+Limits : 
+Only works with .txt files.
+"Now refer text_loader.py file"
+
+
+2. PyPDF Loader : 
+It reads the pdf file and converts them into document object.
+It runs on page-by-page basis.
+So in short, for 25 pager document it creates 25 pypdf document objects.
+So after that, you will have list of 25 document objects.
+So now, every Document object will have its own page_content and metadata.
+
+Structure looks something like this : 
+
+[
+    Document(page_content = "Text from page 1 of pdf", metadata = {"page": 0,
+                                                                    "source":"file.pdf"}),
+    Document(page_content = "Text from page 2 of pdf", metadata = {"page": 1,
+                                                                    "source":"file.pdf"}),  
+    .........                                                             
+]
+
+PyPDF loader internally uses PyPDF library.
+Not that great for complex pdf structures or scanned ones. 
+Better for plain text pdfs. 
+"Refer pdf_loader.py".
+
+Which PDF loaders to prefer ? 
+
+Simple, clean PDFs --- > PyPDFLoader
+PDFs with tables/columns  ---> PDFPlumberLoader
+Scanned/Image PDFs ---> UnstructuredPDFLoader ot AmazonTextractPDFLoader
+Need layout and image data --->  PyMuPDFLoader
+Want best structure extraction ---> UnstructuredPDFLoader
+
+Refer this link for in depth document loaders :https://python.langchain.com/docs/integrations/document_loaders/
